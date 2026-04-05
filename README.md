@@ -198,6 +198,38 @@ python autograder.py
 
 ---
 
+## Benchmark Results
+
+Run across 3 mazes (tinyMaze, mediumMaze, bigMaze) using `python benchmark.py`:
+
+```
++--------------+-----------+--------+----------+----------------+----------+-------+
+|     Maze     | Algorithm | Result |Path Cost | Nodes Expanded | Time (s) | Score |
++--------------+-----------+--------+----------+----------------+----------+-------+
+|   tinyMaze   |    DFS    |  WIN   |    10    |       15       |   0.0    | 500.0 |
+|   tinyMaze   |    BFS    |  WIN   |    8     |       15       |   0.0    | 502.0 |
+|   tinyMaze   |    UCS    |  WIN   |    8     |       15       |   0.0    | 502.0 |
++--------------+-----------+--------+----------+----------------+----------+-------+
+|  mediumMaze  |    DFS    |  WIN   |   130    |      146       |   0.0    | 380.0 |
+|  mediumMaze  |    BFS    |  WIN   |    68    |      269       |   0.0    | 442.0 |
+|  mediumMaze  |    UCS    |  WIN   |    68    |      269       |   0.0    | 442.0 |
++--------------+-----------+--------+----------+----------------+----------+-------+
+|   bigMaze    |    DFS    |  WIN   |   210    |      390       |   0.0    | 300.0 |
+|   bigMaze    |    BFS    |  WIN   |   210    |      620       |   0.0    | 300.0 |
+|   bigMaze    |    UCS    |  WIN   |   210    |      620       |   0.0    | 300.0 |
++--------------+-----------+--------+----------+----------------+----------+-------+
+```
+
+**Observations:**
+- **BFS and UCS always find the optimal path** — DFS found a path nearly 2x longer on mediumMaze (130 vs 68)
+- **DFS expands fewer nodes** — it goes deep fast, but path quality is not guaranteed
+- On bigMaze all three algorithms tied — DFS found the optimal path by chance while exploring fewer nodes
+- BFS and UCS produce identical results here because all step costs are equal (cost = 1 per move)
+
+To reproduce: `python benchmark.py`
+
+---
+
 ## Attribution
 
 Based on the Pacman AI Projects developed at UC Berkeley by John DeNero and Dan Klein.
