@@ -1,6 +1,6 @@
 # Pacman Search Agents
 
-Pacman agents navigates maze worlds using uninformed and informed search strategies — finding paths to goals, collecting food, and avoiding ghosts efficiently.
+Pacman agents navigates maze worlds using uninformed and informed search strategies â€” finding paths to goals, collecting food, and avoiding ghosts efficiently.
 
 ---
 
@@ -20,16 +20,16 @@ Pacman agents navigates maze worlds using uninformed and informed search strateg
 
 ```
 pecman_search_agents/
-├── search.py             # Core search algorithm implementations (DFS, BFS, UCS, A*)
-├── searchAgents.py       # Pacman agents and search problem definitions
-├── pacman.py             # Main game entry point
-├── game.py               # Game logic and state management
-├── util.py               # Data structures: Stack, Queue, PriorityQueue
-├── eightpuzzle.py        # Eight-puzzle problem (tests generic search)
-├── autograder.py         # Automated grading script
-├── commands.txt          # All project commands for easy copy-paste
-├── layouts/              # Maze layout files (tinyMaze, mediumMaze, bigMaze, etc.)
-└── test_cases/           # Autograder test cases
+  search.py             # Core search algorithm implementations (DFS, BFS, UCS, A*)
+  searchAgents.py       # Pacman agents and search problem definitions
+  pacman.py             # Main game entry point
+  game.py               # Game logic and state management
+  util.py               # Data structures: Stack, Queue, PriorityQueue
+  eightpuzzle.py        # Eight-puzzle problem (tests generic search)
+  autograder.py         # Automated grading script
+  commands.txt          # All project commands for easy copy-paste
+  layouts/              # Maze layout files (tinyMaze, mediumMaze, bigMaze, etc.)
+  test_cases/           # Autograder test cases
 ```
 
 ---
@@ -86,7 +86,7 @@ All algorithms are implemented in `search.py` and return a **list of actions** (
 
 | Agent | Description |
 |-------|-------------|
-| `GoWestAgent` | Always moves West — a trivial reflex agent |
+| `GoWestAgent` | Always moves West ” a trivial reflex agent |
 | `SearchAgent` | Plans a full path using a specified search algorithm |
 | `StayEastSearchAgent` | UCS agent that prefers staying East (low ghost areas) |
 | `StayWestSearchAgent` | UCS agent that prefers staying West (high ghost areas) |
@@ -125,11 +125,11 @@ python pacman.py -l bigMaze -z .5 -p SearchAgent
 > The board shows an overlay of explored states (brighter red = explored earlier).
 > Expected solution length for `mediumMaze`: **130** (pushing successors in the order returned by `getSuccessors`).
 
-**mediumMaze � DFS** (path goes along the top, many unexplored areas):
+**mediumMaze — DFS** (path goes along the top, many unexplored areas):
 
 ![mediumMaze DFS](screenshots/mediumMaze_dfs.png)
 
-**bigMaze � DFS** (explores fewer nodes but path is not guaranteed optimal):
+**bigMaze — DFS** (explores fewer nodes but path is not guaranteed optimal):
 
 ![bigMaze DFS](screenshots/bigMaze_dfs.png)
 
@@ -144,11 +144,11 @@ python pacman.py -l mediumMaze -p SearchAgent -a fn=bfs
 python pacman.py -l bigMaze -p SearchAgent -a fn=bfs -z .5
 ```
 
-**mediumMaze � BFS** (explores more evenly, finds optimal path):
+**mediumMaze — BFS** (explores more evenly, finds optimal path):
 
 ![mediumMaze BFS](screenshots/medumMaze_bfs.png)
 
-**bigMaze � BFS** (denser exploration than DFS, same optimal cost):
+**bigMaze — BFS** (denser exploration than DFS, same optimal cost):
 
 ![bigMaze BFS](screenshots/bigMaze_bfs.png)
 
@@ -172,17 +172,17 @@ python pacman.py -l mediumDottedMaze -p StayEastSearchAgent
 python pacman.py -l mediumScaryMaze -p StayWestSearchAgent
 ```
 
-> `StayEastSearchAgent` and `StayWestSearchAgent` use exponential cost functions — expect very low and very high path costs respectively.
+> `StayEastSearchAgent` and `StayWestSearchAgent` use exponential cost functions â€” expect very low and very high path costs respectively.
 
-**mediumMaze — UCS** (explores most of the maze, guarantees least-cost path):
+**mediumMaze UCS** (explores most of the maze, guarantees least-cost path):
 
 ![mediumMaze UCS](screenshots/mediumMaze_ucs.png)
 
-**mediumDottedMaze — StayEastSearchAgent** (UCS with custom cost, Pacman pushed to the East/right side):
+**mediumDottedMaze StayEastSearchAgent** (UCS with custom cost, Pacman pushed to the East/right side):
 
 ![dottedMaze UCS](screenshots/dottedMaze_ucs.png)
 
-**mediumScaryMaze — StayWestSearchAgent** (UCS with ghosts, Pacman stays West to avoid danger):
+**mediumScaryMaze StayWestSearchAgent** (UCS with ghosts, Pacman stays West to avoid danger):
 
 ![scaryMaze UCS](screenshots/scaryMaze_ucs.png)
 
@@ -214,7 +214,7 @@ All search problems implement these methods (defined in `search.py`):
 ### Important Notes
 
 - Search functions must return a **list of legal actions** (directions) from start to goal.
-- Use the `Stack`, `Queue`, and `PriorityQueue` from `util.py` — they have specific properties required by the autograder.
+- Use the `Stack`, `Queue`, and `PriorityQueue` from `util.py` â€” they have specific properties required by the autograder.
 - Each search node must store both the **state** and the **path** to reach it.
 - All algorithms should implement **graph search** (track visited nodes to avoid cycles).
 
@@ -249,11 +249,11 @@ Run across 3 mazes (tinyMaze, mediumMaze, bigMaze) using `python benchmark.py`:
 ```
 
 **Observations:**
-- **BFS and UCS always find the optimal path** � DFS found a path nearly 2x longer on mediumMaze (130 vs 68)
-- **DFS expands fewer nodes** � it goes deep fast, but path quality is not guaranteed
-- On bigMaze all three algorithms tied � DFS found the optimal path by chance while exploring fewer nodes
+- **BFS and UCS always find the optimal path** — DFS found a path nearly 2x longer on mediumMaze (130 vs 68)
+- **DFS expands fewer nodes** — it goes deep fast, but path quality is not guaranteed
+- On bigMaze all three algorithms tied — DFS found the optimal path by chance while exploring fewer nodes
 - BFS and UCS produce identical results here because all step costs are equal (cost = 1 per move)
-- **UCS is the better choice when path costs vary** — for example in mazes with food/dots where collecting more rewards a cheaper path, or in ghost-ridden areas where passing through dangerous zones carries a higher cost. In those cases BFS ignores cost and picks the shortest path by steps, while UCS finds the truly cheapest route
+- **UCS is the better choice when path costs vary**  for example in mazes with food/dots where collecting more rewards a cheaper path, or in ghost-ridden areas where passing through dangerous zones carries a higher cost. In those cases BFS ignores cost and picks the shortest path by steps, while UCS finds the truly cheapest route
 
 To reproduce: `python benchmark.py`
 
