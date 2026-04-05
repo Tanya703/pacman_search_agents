@@ -253,6 +253,7 @@ Run across 3 mazes (tinyMaze, mediumMaze, bigMaze) using `python benchmark.py`:
 - **DFS expands fewer nodes** — it goes deep fast, but path quality is not guaranteed
 - On bigMaze all three algorithms tied — DFS found the optimal path by chance while exploring fewer nodes
 - BFS and UCS produce identical results here because all step costs are equal (cost = 1 per move)
+- **UCS is the better choice when path costs vary** â€” for example in mazes with food/dots where collecting more rewards a cheaper path, or in ghost-ridden areas where passing through dangerous zones carries a higher cost. In those cases BFS ignores cost and picks the shortest path by steps, while UCS finds the truly cheapest route
 
 To reproduce: `python benchmark.py`
 
